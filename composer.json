@@ -1,6 +1,6 @@
 {
-    "name": "laravel/envoy",
-    "description": "Elegant SSH tasks for PHP.",
+    "name": "quanticpotato/envoy",
+    "description": "Fork of laravel/envoy",
     "keywords": ["ssh", "laravel"],
     "license": "MIT",
 	"version": "1.0",
