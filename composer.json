@@ -3,6 +3,7 @@
     "description": "Elegant SSH tasks for PHP.",
     "keywords": ["ssh", "laravel"],
     "license": "MIT",
+	"version": "1.0",
     "authors": [
         {
             "name": "Taylor Otwell",
