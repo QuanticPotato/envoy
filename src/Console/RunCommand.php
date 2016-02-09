@@ -142,7 +142,7 @@ class RunCommand extends \Symfony\Component\Console\Command\Command
     protected function passToRemoteProcessor(Task $task)
     {
         return $this->getRemoteProcessor($task)->run($task, function ($type, $host, $line) {
-            $displayChunk = function ($chunk) {
+            $displayChunk = function ($line) {
                 if (starts_with($line, '[INFO]')) {
                     $this->output->writeln('<fg=blue>' . trim($line) . '</>');
                 } elseif (starts_with($line, '[SUCC]')) {
@@ -150,14 +150,16 @@ class RunCommand extends \Symfony\Component\Console\Command\Command
                 } elseif (starts_with($line, '[ERR]')) {
                     $this->output->writeln('<fg=red>' . trim($line) . '</>');
                 } else {
-                    $this->output->writeln(trim($line));
+                    echo trim($line);
                 }
             };
             $lines = explode(PHP_EOL, $line);
             $c = count($lines);
             for ($i = 0; $i < $c; $i++) {
-                $displayChunk($lines[$i]);
-                echo ($i < $c - 1) ? PHP_EOL : '';
+                if (!empty($lines[$i])) {
+                    $displayChunk($lines[$i]);
+                    echo ($i < $c - 1) ? PHP_EOL : '';
+                }
             }
         });
     }
