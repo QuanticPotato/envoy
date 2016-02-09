@@ -28,6 +28,7 @@ abstract class RemoteProcessor
 
         if (in_array($target, ['local', 'localhost', '127.0.0.1'])) {
             $process = new Process($task->script);
+            $process->setTty(true);
         }
 
         // Here we'll run the SSH task on the server inline. We do not need to write the
